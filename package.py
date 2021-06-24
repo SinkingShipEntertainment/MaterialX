@@ -45,6 +45,7 @@ variants = [
 
 # Pass cmake arguments to the REZ build system:
 # rez-build -i -- -DMATERIALX_PYTHON_EXECUTABLE:FILEPATH=${REZ_PYTHON_ROOT}/bin/python
+# rez-release -- -DMATERIALX_PYTHON_EXECUTABLE:FILEPATH=${REZ_PYTHON_ROOT}/bin/python
 
 uuid = "repository.MaterialX"
 
