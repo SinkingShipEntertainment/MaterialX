@@ -10,8 +10,8 @@ set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 set(CMAKE_MACOSX_RPATH ON)
 enable_testing()
 
-option(MATERIALX_BUILD_PYTHON "Build the MaterialX Python package from C++ bindings. Requires Python 2.7 or greater." OFF)
-option(MATERIALX_BUILD_VIEWER "Build the MaterialX Viewer." OFF)
+option(MATERIALX_BUILD_PYTHON "Build the MaterialX Python package from C++ bindings. Requires Python 2.7 or greater." ON)
+option(MATERIALX_BUILD_VIEWER "Build the MaterialX Viewer." ON)
 option(MATERIALX_BUILD_DOCS "Create HTML documentation using Doxygen. Requires that Doxygen be installed." OFF)
 
 option(MATERIALX_BUILD_GEN_GLSL "Build the GLSL shader generator back-end." ON)
@@ -21,11 +21,21 @@ option(MATERIALX_BUILD_RENDER "Build the MaterialX Render modules." ON)
 option(MATERIALX_BUILD_OIIO "Build OpenImageIO support for MaterialXRender." OFF)
 option(MATERIALX_BUILD_TESTS "Build unit tests." ON)
 
-option(MATERIALX_BUILD_SHARED_LIBS "Build MaterialX libraries as shared rather than static." OFF)
+option(MATERIALX_BUILD_SHARED_LIBS "Build MaterialX libraries as shared rather than static." ON)
 option(MATERIALX_PYTHON_LTO "Enable link-time optimizations for MaterialX Python." ON)
-option(MATERIALX_INSTALL_PYTHON "Install the MaterialX Python package as a third-party library when the install target is built." ON)
+option(MATERIALX_INSTALL_PYTHON "Install the MaterialX Python package as a third-party library when the install target is built." OFF)
 option(MATERIALX_TEST_RENDER "Run rendering tests for MaterialX Render module. GPU required for graphics validation." ON)
 option(MATERIALX_WARNINGS_AS_ERRORS "Interpret all compiler warnings as errors." OFF)
+
+# REZ
+# Set which python version to look for
+if($ENV{REZ_PYTHON_VERSION} EQUAL "2.7.5")
+    set(MATERIALX_PYTHON_VERSION "2.7")
+    set(MATERIALX_PYTHON_EXECUTABLE $ENV{REZ_PYTHON_ROOT}/bin/python)
+elseif($ENV{REZ_PYTHON_VERSION} EQUAL "3.7.7")
+    set(MATERIALX_PYTHON_VERSION "3.7")
+    set(MATERIALX_PYTHON_EXECUTABLE $ENV{REZ_PYTHON_ROOT}/bin/python3)
+endif()
 
 set(MATERIALX_PYTHON_VERSION "" CACHE STRING
     "Python version to be used in building the MaterialX Python package (e.g. '2.7').")
