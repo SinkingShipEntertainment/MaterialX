@@ -44,10 +44,10 @@ variants = [
 # NOTE: Remember to run: git submodule update --init --recursive
 
 # Pass cmake arguments to the REZ build system:
-# rez-build -i --variants 0 -- -DMATERIALX_PYTHON_EXECUTABLE:FILEPATH=${REZ_PYTHON_ROOT}/bin/python
-# rez-build -i --variants 1 -- -DMATERIALX_PYTHON_EXECUTABLE:FILEPATH=${REZ_PYTHON_ROOT}/bin/python3
-# rez-release --variants 0 -- -DMATERIALX_PYTHON_EXECUTABLE:FILEPATH=${REZ_PYTHON_ROOT}/bin/python
-# rez-release --variants 1 -- -DMATERIALX_PYTHON_EXECUTABLE:FILEPATH=${REZ_PYTHON_ROOT}/bin/python3
+# rez-build -i --variants 0 -- -DMATERIALX_PYTHON_EXECUTABLE:FILEPATH=/mnt/rez/release/ext/python/2.7.5/platform-linux/arch-x86_64/os-centos-7/bin/python
+# rez-build -i --variants 1 -- -DMATERIALX_PYTHON_EXECUTABLE:FILEPATH=/mnt/rez/release/ext/python/3.7.7/platform-linux/arch-x86_64/os-centos-7/bin/python3
+# rez-release --variants 0 -- -DMATERIALX_PYTHON_EXECUTABLE:FILEPATH=/mnt/rez/release/ext/python/2.7.5/platform-linux/arch-x86_64/os-centos-7/bin/python
+# rez-release --variants 1 -- -DMATERIALX_PYTHON_EXECUTABLE:FILEPATH=/mnt/rez/release/ext/python/3.7.7/platform-linux/arch-x86_64/os-centos-7/bin/python3
 
 uuid = "repository.MaterialX"
 
