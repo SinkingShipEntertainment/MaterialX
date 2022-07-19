@@ -37,17 +37,24 @@ private_build_requires = [
 
 # Modify the CMakeLists to reflect python versions being used here
 variants = [
-    ["platform-linux", "arch-x86_64", "os-centos-7", "python-2.7"],
-    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.7"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "python-2.7.5"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.7.7"],
+    ["platform-linux", "arch-x86_64", "os-centos-7", "python-3.9.7"],
 ]
 
 # NOTE: Remember to run: git submodule update --init --recursive
 
+# -------------------------------------------
 # Pass cmake arguments to the REZ build system:
+
 # rez-build -i --variants 0 -- -DMATERIALX_PYTHON_EXECUTABLE:FILEPATH=/mnt/rez/release/ext/python/2.7.5/platform-linux/arch-x86_64/os-centos-7/bin/python
 # rez-build -i --variants 1 -- -DMATERIALX_PYTHON_EXECUTABLE:FILEPATH=/mnt/rez/release/ext/python/3.7.7/platform-linux/arch-x86_64/os-centos-7/bin/python3
+# rez-build -i --variants 2 -- -DMATERIALX_PYTHON_EXECUTABLE:FILEPATH=/mnt/rez/release/ext/python/3.9.7/platform-linux/arch-x86_64/os-centos-7/bin/python3
+
 # rez-release --variants 0 -- -DMATERIALX_PYTHON_EXECUTABLE:FILEPATH=/mnt/rez/release/ext/python/2.7.5/platform-linux/arch-x86_64/os-centos-7/bin/python
 # rez-release --variants 1 -- -DMATERIALX_PYTHON_EXECUTABLE:FILEPATH=/mnt/rez/release/ext/python/3.7.7/platform-linux/arch-x86_64/os-centos-7/bin/python3
+# rez-release --variants 2 -- -DMATERIALX_PYTHON_EXECUTABLE:FILEPATH=/mnt/rez/release/ext/python/3.9.7/platform-linux/arch-x86_64/os-centos-7/bin/python3
+# -------------------------------------------
 
 uuid = "repository.MaterialX"
 
