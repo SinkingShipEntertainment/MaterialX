@@ -41,6 +41,11 @@ elseif($ENV{REZ_PYTHON_VERSION} EQUAL "3.7.7")
         "Python version to be used in building the MaterialX Python package (e.g. '2.7').")
     set(MATERIALX_PYTHON_EXECUTABLE $ENV{REZ_PYTHON_ROOT}/bin/python3 CACHE FILEPATH
         "Python executable to be used in building the MaterialX Python package (e.g. 'C:/Python27/python.exe').")
+elseif($ENV{REZ_PYTHON_VERSION} EQUAL "3.9.7")
+    set(MATERIALX_PYTHON_VERSION "3.9" CACHE STRING
+        "Python version to be used in building the MaterialX Python package (e.g. '2.7').")
+    set(MATERIALX_PYTHON_EXECUTABLE $ENV{REZ_PYTHON_ROOT}/bin/python3 CACHE FILEPATH
+        "Python executable to be used in building the MaterialX Python package (e.g. 'C:/Python27/python.exe').")
 endif()
 # ---------------------------------------------
 

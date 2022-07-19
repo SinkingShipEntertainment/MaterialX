@@ -67,6 +67,7 @@ def commands():
 
     env.LD_LIBRARY_PATH.append("{root}/lib")
     env.PATH.append("{root}/bin")
+    env.PYTHONPATH.append("{root}/python")
 
     if building:
         env.CMAKE_MODULE_PATH.append("{root}/cmake")
