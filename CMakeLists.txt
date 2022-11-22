@@ -14,7 +14,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-# JavaScript setup 
+# JavaScript setup
 option(MATERIALX_BUILD_JS "Build the MaterialX JavaScript package from C++ bindings. Requires the emscripten environment." OFF)
 set(MATERIALX_EMSDK_PATH "" CACHE PATH "Path to EMSDK (e.g. 'D:/Projects/emsdk').")
 if (MATERIALX_BUILD_JS)
@@ -33,7 +33,7 @@ endif()
 
 project(MaterialX VERSION ${MATERIALX_LIBRARY_VERSION})
 
-option(MATERIALX_BUILD_PYTHON "Build the MaterialX Python package from C++ bindings. Requires Python 3.6 or greater." OFF)
+option(MATERIALX_BUILD_PYTHON "Build the MaterialX Python package from C++ bindings. Requires Python 3.6 or greater." ON) # Marcelo: was OFF
 option(MATERIALX_BUILD_VIEWER "Build the MaterialX Viewer." OFF)
 option(MATERIALX_BUILD_GRAPH_EDITOR "Build the MaterialX Graph Editor." OFF)
 option(MATERIALX_BUILD_DOCS "Create HTML documentation using Doxygen. Requires that Doxygen be installed." OFF)
@@ -47,7 +47,7 @@ option(MATERIALX_BUILD_OIIO "Build OpenImageIO support for MaterialXRender." OFF
 option(MATERIALX_BUILD_TESTS "Build unit tests." ON)
 option(MATERIALX_BUILD_BENCHMARK_TESTS "Build benchmark tests." OFF)
 
-option(MATERIALX_BUILD_SHARED_LIBS "Build MaterialX libraries as shared rather than static." OFF)
+option(MATERIALX_BUILD_SHARED_LIBS "Build MaterialX libraries as shared rather than static." ON)
 option(MATERIALX_PYTHON_LTO "Enable link-time optimizations for MaterialX Python." ON)
 option(MATERIALX_INSTALL_PYTHON "Install the MaterialX Python package as a third-party library when the install target is built." ON)
 option(MATERIALX_INSTALL_RESOURCES "Install the resources folder when building render modules." ON)
@@ -78,10 +78,27 @@ if (MATERIALX_BUILD_JS)
     set(MATERIALX_BUILD_TESTS OFF)
 endif()
 
-set(MATERIALX_PYTHON_VERSION "" CACHE STRING
-    "Python version to be used in building the MaterialX Python package (e.g. '3.9').")
-set(MATERIALX_PYTHON_EXECUTABLE "" CACHE FILEPATH
-    "Python executable to be used in building the MaterialX Python package (e.g. 'C:/Python39/python.exe').")
+# ---------------------------------------------
+# REZ
+# ---------------------------------------------
+# Set which python version to look for
+if($ENV{REZ_PYTHON_VERSION} EQUAL "3.7.7")
+    set(MATERIALX_PYTHON_VERSION "3.7" CACHE STRING
+        "Python version to be used in building the MaterialX Python package (e.g. '3.7').")
+    set(MATERIALX_PYTHON_EXECUTABLE $ENV{REZ_PYTHON_ROOT}/bin/python3 CACHE FILEPATH
+        "Python executable to be used in building the MaterialX Python package (e.g. 'C:/Python27/python.exe').")
+elseif($ENV{REZ_PYTHON_VERSION} EQUAL "3.9.18")
+    set(MATERIALX_PYTHON_VERSION "3.9" CACHE STRING
+        "Python version to be used in building the MaterialX Python package (e.g. '3.9').")
+    set(MATERIALX_PYTHON_EXECUTABLE $ENV{REZ_PYTHON_ROOT}/bin/python3 CACHE FILEPATH
+        "Python executable to be used in building the MaterialX Python package (e.g. 'C:/Python27/python.exe').")
+endif()
+
+
+# set(MATERIALX_PYTHON_VERSION "" CACHE STRING
+#     "Python version to be used in building the MaterialX Python package (e.g. '2.7').")
+# set(MATERIALX_PYTHON_EXECUTABLE "" CACHE FILEPATH
+    # "Python executable to be used in building the MaterialX Python package (e.g. 'C:/Python27/python.exe').")
 set(MATERIALX_PYTHON_OCIO_DIR "" CACHE PATH
     "Path to a folder containing the default OCIO configuration to be packaged with MaterialX Python (e.g. 'D:/Projects/OpenColorIO-Configs/aces_1.0.3').")
 set(MATERIALX_PYTHON_PYBIND11_DIR "" CACHE PATH
